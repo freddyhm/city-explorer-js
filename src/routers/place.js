@@ -13,7 +13,7 @@ router.get('/places/:activityName', async (req, res) => {
 
         res.status(200).send(place);
     } catch (e) {
-
+        res.status(500).send(e);
     }
 });
 

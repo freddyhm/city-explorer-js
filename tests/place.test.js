@@ -9,32 +9,31 @@ mongoose.connect(connectionURL, {
     useCreateIndex: true
 });
 
-beforeAll(() => {
+beforeAll(async () => {
+    await Place.collection.drop();
     const poutinePlace = new Place({ name: 'Poutineville', activity: 'eating'});
-    poutinePlace.save();
-});
-
-afterAll(() => {
-    Place.collection.drop();
+    await poutinePlace.save();
 });
 
 describe('get places', () => {
     it("should return the place that is associated with the user's activity", async () => {
+
         const userActivity = 'eating';
         const response = await request(app)
             .get('/places/' + userActivity)
             .expect(200);
 
-        expect(response.body.name).toBe('Poutineville')
+        expect(response.body.name).toBe('Poutineville');
     });
 
     it("should return an error message if no place is associated with the user's activity", async () => {
+
         const userActivity = 'running';
         const response = await request(app)
             .get('/places/' + userActivity)
             .expect(404);
 
-        expect(response.text).toBe('Could not find place!')
+        expect(response.text).toBe('Could not find place!');
     });
 });
 
