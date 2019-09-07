@@ -18,8 +18,8 @@ afterAll(() => {
     Place.collection.drop();
 });
 
-describe('getSuggestion', () => {
-    it("Should return the place that is associated with the user's activity", async () => {
+describe('get places', () => {
+    it("should return the place that is associated with the user's activity", async () => {
         const userActivity = 'eating';
         const response = await request(app)
             .get('/places/' + userActivity)
@@ -28,7 +28,7 @@ describe('getSuggestion', () => {
         expect(response.body.name).toBe('Poutineville')
     });
 
-    it("Should return an error message if no place is associated with the user's activity", async () => {
+    it("should return an error message if no place is associated with the user's activity", async () => {
         const userActivity = 'running';
         const response = await request(app)
             .get('/places/' + userActivity)
