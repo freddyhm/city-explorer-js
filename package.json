@@ -4,8 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "env-cmd -f ./config/dev.env nodemon src/index.js",
-    "test": "jest --watchAll"
+    "dev": "env-cmd -f ./config/dev.env nodemon src/index.js -e js",
+    "test": "jest --watchAll",
+    "cy:run": "cypress run -s \"cypress/integration/city-explorer-spec.js\""
   },
   "jest": {
     "testEnvironment": "node"

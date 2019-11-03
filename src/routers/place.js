@@ -1,6 +1,7 @@
 const express = require('express');
 const router = new express.Router();
 const Place = require('../models/place');
+// ok dude
 
 router.get('/places/:activityName', async (req, res) => {
 
@@ -8,7 +9,7 @@ router.get('/places/:activityName', async (req, res) => {
         const place = await Place.findOne({ activity: req.params.activityName});
 
         if (!place){
-            return res.status(404).send("Could not find place!");
+            return res.status(404).send();
         }
 
         res.status(200).send(place);

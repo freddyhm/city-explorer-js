@@ -23,10 +23,9 @@ describe('get places', () => {
 
         const userActivity = 'running';
         const response = await request(app)
-            .get('/places/' + userActivity)
-            .expect(404);
+            .get('/places/' + userActivity);
 
-        expect(response.text).toBe('Could not find place!');
+        expect(response.status).toBe(404);
     });
 });
 
