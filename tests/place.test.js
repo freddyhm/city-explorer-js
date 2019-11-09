@@ -8,6 +8,8 @@ beforeAll(async () => {
     await poutinePlace.save();
 });
 
+
+
 describe('get places', () => {
     it("returns the place that is associated with the user's activity", async () => {
 
@@ -28,7 +30,4 @@ describe('get places', () => {
         expect(response.status).toBe(404);
     });
 });
-
-
-
 

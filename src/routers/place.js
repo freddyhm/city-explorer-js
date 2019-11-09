@@ -1,7 +1,6 @@
 const express = require('express');
 const router = new express.Router();
 const Place = require('../models/place');
-// ok dude
 
 router.get('/places/:activityName', async (req, res) => {
 
