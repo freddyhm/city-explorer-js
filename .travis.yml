@@ -1,5 +1,3 @@
 language: node_js
-install:
-  - npm ci
-script:
-  - $(npm bin)/cypress run --record
+node_js:
+  - node
