@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start": "node src/index.js",
     "dev": "env-cmd -f .env nodemon src/index.js -e js --ignore 'cypress/*'",
     "test": "jest --watchAll",
     "cy:run": "cypress run -s \"cypress/integration/city-explorer-spec.js\""

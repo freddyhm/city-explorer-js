@@ -10,7 +10,7 @@ activityForm.addEventListener('submit', (e) => {
 
     const activity = activityText.value;
 
-    fetch('http://localhost:3000/places/' + activity).then((response) => {
+    fetch('/places/' + activity).then((response) => {
         if(response.status !== 200){
             placeResult.textContent = "Could not find place!"
         }else{
@@ -21,7 +21,7 @@ activityForm.addEventListener('submit', (e) => {
     });
 });
 
-fetch('http://localhost:3000/').then((response) => {
+fetch('/').then((response) => {
 
     if(response.status === 200){
         response.json().then((data) => {
