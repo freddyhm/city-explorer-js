@@ -3,7 +3,7 @@
 
 Curated list of interesting things to do in the cities I've lived in.
 
-This app will mainly be used to play around with the following:
+This app will mainly be used to play around with the following tech:
 
 - Building a REST API with Node.JS
 - TDD with Jest and Cypress test frameworks
