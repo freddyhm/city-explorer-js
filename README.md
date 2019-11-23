@@ -10,3 +10,4 @@ This app will mainly be used to play around with the following:
 - Mongodb with Mongoose
 - Travis CI
 - Deploying to Heroku
+- Webstorm IDE
