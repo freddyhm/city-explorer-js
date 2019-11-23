@@ -7,7 +7,7 @@
     "start": "node src/index.js",
     "test": "jest",
     "dev": "nodemon src/index.js -e js --ignore 'cypress/*'",
-    "cy:run": "cypress run -s \"cypress/integration/city-explorer.spec.js\""
+    "cy:run": "cypress run -s \"cypress/integration/city-explorer-spec.js\""
   },
   "jest": {
     "testEnvironment": "node"
