@@ -7,4 +7,6 @@ This app will mainly be used to play around with the following:
 
 - Building a REST API with Node.JS
 - TDD with Jest and Cypress test frameworks
-- Mongodb and Mongoose
+- Mongodb with Mongoose
+- Travis CI
+- Deploying to Heroku
