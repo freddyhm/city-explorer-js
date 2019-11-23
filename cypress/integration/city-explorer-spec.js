@@ -1,4 +1,3 @@
-
 describe('choosing an activity', function() {
     it('shows one or more activities displayed in the home page', function(){
         cy.visit('http://localhost:3000');

@@ -7,6 +7,10 @@ router.get('/places/:activityName', async (req, res) => {
     try {
         const place = await Place.findOne({ activity: req.params.activityName});
 
+        let one = "two";
+        let two = "ok";
+        let another = "run";
+
         if (!place){
             return res.status(404).send();
         }
