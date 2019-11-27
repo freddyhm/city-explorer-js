@@ -1,9 +1,11 @@
-const path = require('path');
 const express = require('express');
-const placeRouter = require('./routers/place');
-const activityRouter = require('./routers/activity');
+const path = require('path');
 require('./db/mongoose');
+
 const app = express();
+
+const placeRouter = require('./routes/place');
+const activityRouter = require('./routes/activity');
 
 app.use(placeRouter);
 app.use(activityRouter);

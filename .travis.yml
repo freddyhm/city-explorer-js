@@ -5,4 +5,5 @@ install:
   - npm ci
 script:
   - $(npm bin)/cypress run
-  - $(npm bin)/jest
+  - $(npm bin)/mocha
+  - npm run coverage
