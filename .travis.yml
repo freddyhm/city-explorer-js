@@ -4,6 +4,5 @@ node_js:
 install:
   - npm ci
 script:
+  - npm run test
   - $(npm bin)/cypress run
-  - $(npm bin)/mocha
-  - npm run coverage
