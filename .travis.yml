@@ -34,3 +34,6 @@ jobs:
         app: hidalgo-city-explorer-prod
         api_key: $HEROKU_AUTH_TOKEN
         on: master
+
+after_success:
+  - npm run coveralls
