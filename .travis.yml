@@ -25,7 +25,7 @@ jobs:
         provider: heroku
         app: hidalgo-city-explorer
         api_key: $HEROKU_AUTH_TOKEN
-        on: dev
+        on: development
   - stage: deploy to production
     deploy:
         provider: heroku
