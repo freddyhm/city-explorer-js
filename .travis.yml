@@ -15,12 +15,14 @@ jobs:
       - npm run test
       - $(npm bin)/cypress run
   - stage: deploy to staging
+    script: skip
     deploy:
         provider: heroku
         app: hidalgo-city-explorer-staging
         api_key: $HEROKU_AUTH_TOKEN
         on: staging
   - stage: deploy to development
+    script: skip
     deploy:
         provider: heroku
         app: hidalgo-city-explorer
