@@ -5,17 +5,30 @@ install:
 - npm ci
 branches:
   only:
+    - development
+    - staging
     - master
 jobs:
   include:
   - stage: tests
-    script:
-    - npm run test
-    - $(npm bin)/cypress run
+      script:
+      - npm run test
+      - $(npm bin)/cypress run
   - stage: deploy to staging
-    script: skip
-    deploy:
-      provider: heroku
-      app: hidalgo-city-explorer
-      api_key: $HEROKU_AUTH_TOKEN
-      on: master
+      deploy:
+        provider: heroku
+        app: hidalgo-city-explorer-staging
+        api_key: $HEROKU_AUTH_TOKEN
+        on: staging
+  - stage: deploy to development
+      deploy:
+        provider: heroku
+        app: hidalgo-city-explorer
+        api_key: $HEROKU_AUTH_TOKEN
+        on: dev
+  - stage: deploy to production
+      deploy:
+        provider: heroku
+        app: hidalgo-city-explorer-prod
+        api_key: $HEROKU_AUTH_TOKEN
+        on: master
