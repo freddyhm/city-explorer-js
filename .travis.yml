@@ -3,6 +3,9 @@ node_js:
 - node
 install:
 - npm ci
+branches:
+  only:
+    - master
 jobs:
   include:
   - stage: tests
@@ -15,3 +18,4 @@ jobs:
       provider: heroku
       app: hidalgo-city-explorer
       api_key: $HEROKU_AUTH_TOKEN
+      on: master
