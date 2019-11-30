@@ -1,19 +1,21 @@
 language: node_js
 node_js:
-  - node
+- node
 install:
-  - npm ci
-
+- npm ci
 jobs:
   include:
-    - stage: tests
-      script:
-        - npm run test
-        - $(npm bin)/cypress run
-    - stage: deploy to staging
-      script: skip
-      deploy:
-        provider: heroku
-        app: hidalgo-city-explorer
-        api_key:
-          secure: HEROKU_AUTH_TOKEN
+  - stage: tests
+    script:
+    - npm run test
+    - "$(npm bin)/cypress run"
+  - stage: deploy to staging
+    script: skip
+    deploy:
+      provider: heroku
+      app: hidalgo-city-explorer
+      api_key: HEROKU_AUTH_TOKEN
+deploy:
+  provider: heroku
+  api_key: b6cc32dd-d863-464b-b232-c6c0852284d1
+  app: hidalgo-city-explorer
