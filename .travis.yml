@@ -6,13 +6,14 @@ install:
 
 jobs:
   include:
-    - stage: unit tests
-      script: npm run test
-    - stage: functional tests
-      script: $(npm bin)/cypress run
+    - stage: tests
+      script:
+        - npm run test
+        - npm cypress run
     - stage: deploy to staging
       script: skip
-      deploy: &heroku
+      deploy:
         provider: heroku
         app: hidalgo-city-explorer
-        api_key: HEROKU_AUTH_TOKEN
+        api_key:
+          secure: HEROKU_AUTH_TOKEN
