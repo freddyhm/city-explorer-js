@@ -9,7 +9,7 @@ jobs:
     - stage: tests
       script:
         - npm run test
-        - npm cypress run
+        - $(npm bin)/cypress run
     - stage: deploy to staging
       script: skip
       deploy:
