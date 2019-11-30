@@ -16,21 +16,25 @@ jobs:
       - $(npm bin)/cypress run
     after_success:
       - npm run coverage
-  - stage: deploy to staging
-    script: skip
-    deploy:
-        provider: heroku
-        app: hidalgo-city-explorer-staging
-        api_key: $HEROKU_AUTH_TOKEN
-        on: staging
   - stage: deploy to development
+    if: branch = development
     script: skip
     deploy:
         provider: heroku
         app: hidalgo-city-explorer
         api_key: $HEROKU_AUTH_TOKEN
         on: development
+  - stage: deploy to staging
+    if: branch = staging
+    script: skip
+    deploy:
+      provider: heroku
+      app: hidalgo-city-explorer-staging
+      api_key: $HEROKU_AUTH_TOKEN
+      on: staging
   - stage: deploy to production
+    if: branch = master
+    script: skip
     deploy:
         provider: heroku
         app: hidalgo-city-explorer-prod
