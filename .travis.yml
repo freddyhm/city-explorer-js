@@ -3,6 +3,16 @@ node_js:
   - node
 install:
   - npm ci
-script:
-  - npm run test
-  - $(npm bin)/cypress run
+
+jobs:
+  include:
+    - stage: unit tests
+      script: npm run test
+    - stage: functional tests
+      script: $(npm bin)/cypress run
+    - stage: deploy to staging
+      script: skip
+      deploy: &heroku
+        provider: heroku
+        app: hidalgo-city-explorer
+        api_key: HEROKU_AUTH_TOKEN
