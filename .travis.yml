@@ -11,23 +11,23 @@ branches:
 jobs:
   include:
   - stage: tests
-      script:
+    script:
       - npm run test
       - $(npm bin)/cypress run
   - stage: deploy to staging
-      deploy:
+    deploy:
         provider: heroku
         app: hidalgo-city-explorer-staging
         api_key: $HEROKU_AUTH_TOKEN
         on: staging
   - stage: deploy to development
-      deploy:
+    deploy:
         provider: heroku
         app: hidalgo-city-explorer
         api_key: $HEROKU_AUTH_TOKEN
         on: dev
   - stage: deploy to production
-      deploy:
+    deploy:
         provider: heroku
         app: hidalgo-city-explorer-prod
         api_key: $HEROKU_AUTH_TOKEN
