@@ -8,14 +8,10 @@ jobs:
   - stage: tests
     script:
     - npm run test
-    - "$(npm bin)/cypress run"
+    - $(npm bin)/cypress run
   - stage: deploy to staging
     script: skip
     deploy:
       provider: heroku
       app: hidalgo-city-explorer
-      api_key: HEROKU_AUTH_TOKEN
-deploy:
-  provider: heroku
-  api_key: b6cc32dd-d863-464b-b232-c6c0852284d1
-  app: hidalgo-city-explorer
+      api_key: $HEROKU_AUTH_TOKEN
