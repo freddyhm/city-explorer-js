@@ -1,4 +1,3 @@
-const should = require('should');
 const sinon = require('sinon');
 
 const placeController = require('../../src/controllers/placeController');
