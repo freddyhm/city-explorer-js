@@ -1,7 +1,6 @@
 function placeController(Place){
     async function get(req, res) {
         try {
-
             const place = await Place.findOne({activity: req.params.activityName});
 
             if (!place) {

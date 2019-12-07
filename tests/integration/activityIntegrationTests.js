@@ -2,7 +2,7 @@ const request = require('supertest');
 const app = require('../../src/app');
 const mongoose = require('mongoose')
 const Activity = mongoose.model('Activity');
-
+const should = require('chai').should();
 
 //beforeAll(async () => {
     // await Activity.collection.drop();
@@ -16,15 +16,27 @@ const Activity = mongoose.model('Activity');
 //
  describe('get activities', () => {
 
-     it("returns one or more activities", async () => {
+     it("returns all activities", async () => {
 
-            const eatingActivity = new Activity({name: 'eating'});
-            await eatingActivity.save();
+         // Arrange
+         const eatingActivity = new Activity({name: 'eating'});
+         const partyingActivity = new Activity({name: 'partying'});
 
-            const response = await request(app)
-                .get('/activities/');
+         await eatingActivity.save();
+         await partyingActivity.save();
 
-            response.should.not.be.empty();
+         // Act
+         const response = await request(app)
+             .get('/activities/');
+
+         // Assert
+         response.body.length.should.be.equal(2);
+         response.body[0].name.should.be.equal('eating');
+         response.body[1].name.should.be.equal('partying');
+     });
+
+     it("returns all places for an activity", async () => {
+
      });
 
      afterEach(() => {

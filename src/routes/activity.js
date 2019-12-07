@@ -1,8 +1,8 @@
 const express = require('express');
 const router = new express.Router();
-const placeController = require('../controllers/placeController');
+const activityController = require('../controllers/activityController');
 const Activity = require('../models/activity');
 
-router.get('/activities', placeController(Activity).get);
+router.get('/activities', activityController(Activity).get);
 
 module.exports = router;
