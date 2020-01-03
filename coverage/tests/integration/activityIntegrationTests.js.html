@@ -22,7 +22,7 @@
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>18/18</span>
+        <span class='fraction'>30/30</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
@@ -32,12 +32,12 @@
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>4/4</span>
+        <span class='fraction'>5/5</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>18/18</span>
+        <span class='fraction'>30/30</span>
       </div>
     </div>
     <p class="quiet">
@@ -93,23 +93,32 @@
 <a name='L45'></a><a href='#L45'>45</a>
 <a name='L46'></a><a href='#L46'>46</a>
 <a name='L47'></a><a href='#L47'>47</a>
-<a name='L48'></a><a href='#L48'>48</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L48'></a><a href='#L48'>48</a>
+<a name='L49'></a><a href='#L49'>49</a>
+<a name='L50'></a><a href='#L50'>50</a>
+<a name='L51'></a><a href='#L51'>51</a>
+<a name='L52'></a><a href='#L52'>52</a>
+<a name='L53'></a><a href='#L53'>53</a>
+<a name='L54'></a><a href='#L54'>54</a>
+<a name='L55'></a><a href='#L55'>55</a>
+<a name='L56'></a><a href='#L56'>56</a>
+<a name='L57'></a><a href='#L57'>57</a>
+<a name='L58'></a><a href='#L58'>58</a>
+<a name='L59'></a><a href='#L59'>59</a>
+<a name='L60'></a><a href='#L60'>60</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -133,8 +142,23 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -144,48 +168,60 @@
 const app = require('../../src/app');
 const mongoose = require('mongoose')
 const Activity = mongoose.model('Activity');
+const ActivityType = mongoose.model('ActivityType');
+&nbsp;
 const should = require('chai').should();
 &nbsp;
-//beforeAll(async () =&gt; {
-    // await Activity.collection.drop();
-    //
-    // const eatingActivity = new Activity({ name: 'eating'});
-    // await eatingActivity.save();
-    //
-    // const partyingActivity = new Activity({ name: 'partying'});
-    // await partyingActivity.save();
-//});
-//
- describe('get activities', () =&gt; {
+describe('get activities', () =&gt; {
 &nbsp;
-     it("returns all activities", async () =&gt; {
+    beforeEach(async () =&gt; {
+        await ActivityType.deleteMany({});
+        await Activity.deleteMany({});
+    });
 &nbsp;
-         // Arrange
-         const eatingActivity = new Activity({name: 'eating'});
-         const partyingActivity = new Activity({name: 'partying'});
+    it("Should return all activities", async () =&gt; {
 &nbsp;
-         await eatingActivity.save();
-         await partyingActivity.save();
+        // Arrange
+        const eatingActivity = new Activity({name: 'eating'});
+        const partyingActivity = new Activity({name: 'partying'});
 &nbsp;
-         // Act
-         const response = await request(app)
-             .get('/activities/');
+        await eatingActivity.save();
+        await partyingActivity.save();
 &nbsp;
-         // Assert
-         response.body.length.should.be.equal(2);
-         response.body[0].name.should.be.equal('eating');
-         response.body[1].name.should.be.equal('partying');
+        // Act
+        const response = await request(app)
+            .get('/activities/');
+&nbsp;
+        // Assert
+        response.body.length.should.be.equal(2);
+        response.body[0].name.should.be.equal('eating');
+        response.body[1].name.should.be.equal('partying');
+    });
+&nbsp;
+    it("Should return all activity types associated with activity", async () =&gt; {
+&nbsp;
+        // Arrange
+        const eatingActivity = new Activity({name: 'eating'});
+        await eatingActivity.save();
+&nbsp;
+        const poutineType = new ActivityType({name: 'poutine', activity: eatingActivity.name});
+        await poutineType.save();
+&nbsp;
+        // Act
+        const response = await request(app)
+            .get('/activity/' + eatingActivity.name);
+&nbsp;
+        // Assert
+        response.body.length.should.be.equal(1);
+        response.body[0].name.should.be.equal('poutine');
      });
 &nbsp;
-     it("returns all places for an activity", async () =&gt; {
+    afterEach(async () =&gt; {
+        await ActivityType.deleteMany();
+        await Activity.deleteMany();
+    });
 &nbsp;
-     });
-&nbsp;
-     afterEach(() =&gt; {
-         Activity.deleteMany({}).exec();
-     });
-&nbsp;
- });
+});
 &nbsp;
 &nbsp;</pre></td></tr>
 </table></pre>
@@ -193,7 +229,7 @@ const should = require('chai').should();
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Sat Dec 07 2019 10:17:20 GMT-0500 (Eastern Standard Time)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Fri Jan 03 2020 13:24:42 GMT-0500 (Eastern Standard Time)
 </div>
 </div>
 <script src="../../prettify.js"></script>
