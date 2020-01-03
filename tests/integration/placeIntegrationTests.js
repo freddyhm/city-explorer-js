@@ -1,7 +1,3 @@
-const sinon = require('sinon');
-
-const placeController = require('../../src/controllers/placeController');
-
 describe('Place Controller Tests:', () =>{
     describe('Get', () => {
        it('Should return the place that is associated with the user\'s activity', () => {
