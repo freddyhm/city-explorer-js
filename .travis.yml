@@ -13,7 +13,7 @@ jobs:
   - stage: tests
     script:
       - npm run test
-      - CYPRESS_baseUrl=$CYPRESS_BASE_URL $(npm bin)/cypress run
+      - $(npm bin)/cypress run
     after_success:
       - npm run coverage
   - stage: deploy to development
