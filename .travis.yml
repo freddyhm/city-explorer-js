@@ -10,10 +10,9 @@ branches:
     - master
 jobs:
   include:
-  - stage: tests
+  - stage: unit tests
     script:
       - npm run test
-      - $(npm bin)/cypress run
     after_success:
       - npm run coverage
   - stage: deploy to development
@@ -40,3 +39,6 @@ jobs:
         app: hidalgo-city-explorer-prod
         api_key: $HEROKU_AUTH_TOKEN
         on: master
+  - stage: functional tests
+    script:
+      - CYPRESS_baseUrl=$CYPRESS_URL $(npm bin)/cypress run
