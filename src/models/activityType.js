@@ -6,8 +6,9 @@ const activityTypeSchema = new mongoose.Schema({
         required: true
     },
     activity: {
-        type: String,
-        required: true
+        type: mongoose.Schema.Types.ObjectId,
+        required: true,
+        ref: 'Activity'
     }
 });
 
