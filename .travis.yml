@@ -42,3 +42,8 @@ jobs:
   - stage: functional tests
     script:
       - CYPRESS_baseUrl=$CYPRESS_URL $(npm bin)/cypress run
+notifications:
+  email:
+    recipients:
+      - $EMAIL
+    on_failure: always # default: always
