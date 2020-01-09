@@ -1,4 +1,5 @@
-const mongoose = require('mongoose')
+const mongoose = require('mongoose');
+const app = require('../../src/app');
 const Activity = mongoose.model('Activity');
 const ActivityType = mongoose.model('ActivityType');
 
