@@ -2,17 +2,21 @@ const mongoose = require('mongoose')
 const Activity = mongoose.model('Activity');
 const ActivityType = mongoose.model('ActivityType');
 
+const activityOneId = new mongoose.Types.ObjectId();
 const activityOne = {
+    _id: activityOneId,
     name: 'eating'
 };
 
+const activityTwoId = new mongoose.Types.ObjectId();
 const activityTwo = {
+    _id: activityTwoId,
     name: 'partying'
 };
 
 const activityTypeOne = {
     name: 'poutine',
-    activity: activityOne.name
+    activity: activityOne._id
 };
 
 const setupDatabase = async () => {

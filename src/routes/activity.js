@@ -19,7 +19,8 @@ router.get('/activities', async (req, res) => {
 
 router.get('/activity/:activityName', async (req, res) => {
     try {
-        const activityTypes = await ActivityType.find({activity: req.params.activityName});
+        const activity = await Activity.find({name: req.params.activityName});
+        const activityTypes = await ActivityType.find({activity: activity[0]._id});
 
         if (!activityTypes) {
             return res.status(404).send();
