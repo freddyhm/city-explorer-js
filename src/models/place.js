@@ -5,9 +5,10 @@ const placeSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    activity: {
-        type: String,
-        required: true
+    activityType: {
+        type: mongoose.Schema.Types.ObjectId,
+        required: true,
+        ref: 'ActivityType'
     }
 });
 

@@ -1,27 +1,29 @@
-describe('Place Controller Tests:', () =>{
-    describe('Get', () => {
-       it('Should return the place that is associated with the user\'s activity', () => {
+const request = require('supertest');
+const app = require('../../src/app');
+const should = require('chai').should();
 
-           // console.log(process.env.NODE_ENV);
-           //
-           // const place = {};
-           //
-           // const req = {
-           //     body: {
-           //         activity: 'eating'
-           //     }
-           // };
-           //
-           // const res = {
-           //      status: sinon.spy(),
-           //      send: sinon.spy(),
-           //      json: sinon.spy()
-           // };
-           //
-           // const controller = placeController(place);
-           // controller.get(req, res);
-           //
-           // res.status.calledWith(400).should.equal(true);
-       });
+const {
+    setupDatabase
+} = require ('../fixtures/db');
+
+describe('get places', () => {
+
+    beforeEach(setupDatabase);
+
+    it("Should return all places", async () => {
+        const response = await request(app)
+            .get('/places/');
+
+        response.body.length.should.be.equal(2);
+        response.body[0].name.should.be.equal('poutineville');
+        response.body[1].name.should.be.equal('rockette');
+    });
+
+    it("Should return places associated with activity type", async () => {
+        const response = await request(app)
+            .get('/places/poutine');
+
+        response.body.length.should.be.equal(1);
+        response.body[0].name.should.be.equal('poutineville');
     });
 });
