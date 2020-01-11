@@ -20,7 +20,7 @@ describe('get activities', () => {
         response.body[1].name.should.be.equal('partying');
     });
 
-    it("Should return all activity types associated with activity", async () => {
+    it("Should return all categories associated with activity", async () => {
         const response = await request(app)
             .get('/activity/' + activityOne.name);
 
@@ -29,3 +29,4 @@ describe('get activities', () => {
      });
 });
 
+// /activities/eating/categories/poutine/places/banquise

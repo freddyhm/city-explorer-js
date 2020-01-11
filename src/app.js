@@ -6,10 +6,11 @@ const app = express();
 
 const placeRouter = require('./routes/place');
 const activityRouter = require('./routes/activity');
-const activityType = require('./models/activityType');
+const category = require('./models/category');
 
 app.use(placeRouter);
 app.use(activityRouter);
+app.use(category);
 
 const publicDirectoryPath = path.join(__dirname, '../public');
 app.use(express.static(publicDirectoryPath));

@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const activityTypeSchema = new mongoose.Schema({
+const categorySchema = new mongoose.Schema({
     name: {
         type: String,
         required: true
@@ -12,6 +12,6 @@ const activityTypeSchema = new mongoose.Schema({
     }
 });
 
-const ActivityType = mongoose.model('ActivityType', activityTypeSchema);
+const Category = mongoose.model('Category', categorySchema);
 
-module.exports = ActivityType;
+module.exports = Category;

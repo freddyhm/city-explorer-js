@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <title>Code coverage report for tests/integration/activityIntegrationTests.js</title>
+    <title>Code coverage report for tests/integration/activity.test.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../prettify.css" />
     <link rel="stylesheet" href="../../base.css" />
@@ -16,7 +16,7 @@
 <div class='wrapper'>
   <div class='pad1'>
     <h1>
-      <a href="../../index.html">All files</a> / <a href="index.html">tests/integration</a> activityIntegrationTests.js
+      <a href="../../index.html">All files</a> / <a href="index.html">tests/integration</a> activity.test.js
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
@@ -168,14 +168,14 @@
 const app = require('../../src/app');
 const mongoose = require('mongoose')
 const Activity = mongoose.model('Activity');
-const ActivityType = mongoose.model('ActivityType');
+const Category = mongoose.model('Category');
 &nbsp;
 const should = require('chai').should();
 &nbsp;
 describe('get activities', () =&gt; {
 &nbsp;
     beforeEach(async () =&gt; {
-        await ActivityType.deleteMany({});
+        await Category.deleteMany({});
         await Activity.deleteMany({});
     });
 &nbsp;
@@ -204,7 +204,7 @@ describe('get activities', () =&gt; {
         const eatingActivity = new Activity({name: 'eating'});
         await eatingActivity.save();
 &nbsp;
-        const poutineType = new ActivityType({name: 'poutine', activity: eatingActivity.name});
+        const poutineType = new Category({name: 'poutine', activity: eatingActivity.name});
         await poutineType.save();
 &nbsp;
         // Act
@@ -217,7 +217,7 @@ describe('get activities', () =&gt; {
      });
 &nbsp;
     afterEach(async () =&gt; {
-        await ActivityType.deleteMany();
+        await Category.deleteMany();
         await Activity.deleteMany();
     });
 &nbsp;

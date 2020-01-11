@@ -5,10 +5,10 @@ const placeSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    activityType: {
+    category: {
         type: mongoose.Schema.Types.ObjectId,
         required: true,
-        ref: 'ActivityType'
+        ref: 'category'
     }
 });
 

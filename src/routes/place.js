@@ -1,7 +1,7 @@
 const express = require('express');
 const router = new express.Router();
 const Place = require('../models/place');
-const ActivityType = require('../models/activityType');
+const Category = require('../models/category');
 
 router.get('/places/', async (req, res) => {
     try {
@@ -17,11 +17,11 @@ router.get('/places/', async (req, res) => {
     }
 });
 
-router.get('/places/:activityType', async (req, res) => {
+router.get('/places/:category', async (req, res) => {
     try {
 
-        const activityType = await ActivityType.find({name: req.params.activityType});
-        const places = await Place.find({activityType: activityType[0]._id});
+        const category = await Category.find({name: req.params.category});
+        const places = await Place.find({category: category[0]._id});
 
         if (!places) {
             return res.status(404).send();
