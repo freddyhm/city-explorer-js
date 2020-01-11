@@ -26,18 +26,30 @@ const categoryOne = {
 const categoryTwoId = new mongoose.Types.ObjectId();
 const categoryTwo = {
     _id: categoryTwoId,
-    name: 'dive bars',
+    name: 'italian',
+    activity: activityOne._id
+};
+
+const categoryThreeId = new mongoose.Types.ObjectId();
+const categoryThree = {
+    _id: categoryThreeId,
+    name: 'dive-bars',
     activity: activityTwo._id
 };
 
 const placeOne = {
-    name: 'poutineville',
+    name: 'Poutineville',
     category: categoryOne._id
 };
 
 const placeTwo = {
-    name: 'rockette',
+    name: 'Pizzeria Dei Compari',
     category: categoryTwo._id
+};
+
+const placeThree = {
+    name: 'Rockette',
+    category: categoryThree._id
 };
 
 const setupDatabase = async () => {
@@ -49,9 +61,12 @@ const setupDatabase = async () => {
     await new Activity(activityTwo).save();
 
     await new Category(categoryOne).save();
+    await new Category(categoryTwo).save();
+    await new Category(categoryThree).save();
 
     await new Place(placeOne).save();
     await new Place(placeTwo).save();
+    await new Place(placeThree).save();
 };
 
 module.exports = {

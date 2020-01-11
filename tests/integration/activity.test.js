@@ -20,12 +20,13 @@ describe('get activities', () => {
         response.body[1].name.should.be.equal('partying');
     });
 
-    it("Should return all categories associated with activity", async () => {
+    it("Should return all categories associated with an activity", async () => {
         const response = await request(app)
-            .get('/activity/' + activityOne.name);
+            .get('/activities/' + activityOne.name + '/categories/');
 
-        response.body.length.should.be.equal(1);
+        response.body.length.should.be.equal(2);
         response.body[0].name.should.be.equal('poutine');
+        response.body[1].name.should.be.equal('italian');
      });
 });
 

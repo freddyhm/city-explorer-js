@@ -17,16 +17,16 @@ router.get('/activities', async (req, res) => {
     }
 });
 
-router.get('/activity/:activityName', async (req, res) => {
+router.get('/activities/:activityName/categories/', async (req, res) => {
     try {
         const activity = await Activity.find({name: req.params.activityName});
-        const categorys = await Category.find({activity: activity[0]._id});
+        const categories = await Category.find({activity: activity[0]._id});
 
-        if (!categorys) {
+        if (!categories) {
             return res.status(404).send();
         }
 
-        res.status(200).send(categorys);
+        res.status(200).send(categories);
     } catch (e) {
         res.status(500).send(e);
     }
